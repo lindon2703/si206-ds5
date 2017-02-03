@@ -1,9 +1,10 @@
 import re
 import unittest
 
+
 # TODO: read dataset.txt under data folder
 # hint: what is a file path?
-f = open("", "r")
+f = open("/Users/mac/si206-ds5/data/dataset.txt", "r")
 
 data = f.read()
 
@@ -11,7 +12,7 @@ data = f.read()
 # store all urls (start with http:// or https://) in all_url variable
 # The outcome should be similar to this:
 # ["http://abc.com", "http://edf.com"]
-regex = r""
+regex = r"(\w+:\/+\w+\S*\w*\S*\w*\S*\w+)"
 all_url = re.findall(regex, data, re.MULTILINE)
 
 # TODO:
@@ -19,32 +20,32 @@ all_url = re.findall(regex, data, re.MULTILINE)
 # tuples and assign it to variable country_url. The outcome should be similar
 # to this:
 # [("https://abc.com/", "United States"), ("https://edf.co.jp", "Japan")]
-regex = r""
+regex = r"(\w+:\/+\w+\S*\w*\S*\w+)\S\s\w+\s*\w*\S* (United States|Japan)"
 country_url = re.findall(regex, data, re.MULTILINE)
 
 # TODO:
 # store all email addresses in all_email as a list
 # the result should be similar to this:
 # ["abc@coj.fd", "bcd@ee1.ab.jp"]
-regex = r""
+regex = r"(\w*\d*\@\w+\.\w+\.*\w*\.*\w*)"
 all_email = re.findall(regex, data, re.MULTILINE)
 
 # TODO:
 # store all emails with gmail as domain in gmail_email as a list. It should
 # include @gmail.com, @gmail.co.jp, @gmail.com.tw and so on.
-regex = r""
+regex = r"(\w*\d*\@gmail\.\w+\.*\w*)"
 gmail_email = re.findall(regex, data, re.MULTILINE)
 
 # TODO:
 # store all edu emails in edu_email as a list. It should include all email ending
 # with .edu
-regex = r""
+regex = r"\w*\d*\@\w+\.*\w*\.edu"
 edu_email = re.findall(regex, data, re.MULTILINE)
 
 # TODO:
 # store all uniqname emails in uniqname_list as a list. It should include only
 # the username part of those email where the domain is @umich.edu
-regex = r""
+regex = r"(\w+)\@umich\.edu"
 uniqname_list = re.findall(regex, data, re.MULTILINE)
 
 
@@ -113,4 +114,5 @@ class RegTest(unittest.TestCase):
         self.assertEqual(uniqname_list, answer)
 
 if __name__ == "__main__":
+    print (gmail_email)
     unittest.main(verbosity=2)
